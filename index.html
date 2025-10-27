@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Impossible Challenge 😆</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .question {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .btns button {
+      background: #ff4040;
+      border: none;
+      color: white;
+      padding: 12px 28px;
+      margin: 10px;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.3s;
+      position: relative;
+    }
+    .btns button:hover {
+      transform: scale(1.1);
+      background: #ff1e1e;
+    }
+    #final-msg {
+      display: none;
+      font-size: 2rem;
+      margin-top: 20px;
+      color: #ffd000;
+    }
+  </style>
+</head>
+<body>
+  <div id="q1" class="question">
+    Do you like challenges?
+    <div class="btns">
+      <button onclick="next('q1','q2')">Yes</button>
+      <button onclick="next('q1','q2')">No</button>
+    </div>
+  </div>
+
+  <div id="q2" class="question" style="display:none;">
+    Do you think you are smart?
+    <div class="btns">
+      <button onclick="next('q2','q3')">Yes</button>
+      <button onclick="next('q2','q3')">No</button>
+    </div>
+  </div>
+
+  <div id="q3" class="question" style="display:none;">
+    Are you able to click "Yes" on this one?
+    <div class="btns">
+      <button id="runYes">Yes</button>
+      <button onclick="end()">No</button>
+    </div>
+  </div>
+
+  <div id="final-msg">I KNEW IT WAS IMPOSSIBLE😂</div>
+
+  <script>
+    function next(current, next) {
+      document.getElementById(current).style.display = 'none';
+      document.getElementById(next).style.display = 'block';
+    }
+
+    const yesBtn = document.getElementById('runYes');
+    yesBtn.addEventListener('mousemove', moveBtn);
+yesBtn.addEventListener('touchstart', moveBtn);
+
+function moveBtn() {
+  yesBtn.style.position = 'absolute';
+  yesBtn.style.top = Math.random() * 80 + 'vh';
+  yesBtn.style.left = Math.random() * 80 + 'vw';
+}
+
+    function end() {
+      document.getElementById('q3').style.display = 'none';
+      document.getElementById('final-msg').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
